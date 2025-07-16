@@ -1,0 +1,35 @@
+
+<template>
+    <div class="flex justify-center py-10 bg-gray-100 space-x-3">
+        <button :disabled="isFirstPage"
+         @click="$router.push({ query: { page: page - 1 } })"
+            class="flex items-center space-x-1.5 px-4 py-1.5 text-white bg-red-500 disabled:bg-gray-300 rounded-lg hover:bg-red-600 transition-all ">
+            <ArrowLeft></ArrowLeft>
+            <span>Anterior</span>
+             
+        </button>
+        <button :disabled="hasMoreData" 
+        @click="$router.push({ query: { page: page + 1 } })"
+            class="flex items-center space-x-1.5 px-4 py-1.5 text-white bg-red-500 disabled:bg-gray-300 rounded-lg hover:bg-red-600 transition-all">
+            <span>Siguiente</span>
+            <ArrowRight></ArrowRight>
+        </button>
+    </div>
+</template>
+
+<script setup lang="ts">
+import ArrowRight from '@/icons/ArrowRight.vue';
+import ArrowLeft from '@/icons/ArrowLeft.vue';
+
+
+interface Props {
+    page: number,
+    isFirstPage: boolean,
+    hasMoreData: boolean
+}
+
+defineProps<Props>();
+
+</script>
+
+<style scoped></style>
